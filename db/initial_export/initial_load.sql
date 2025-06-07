@@ -12,6 +12,6 @@ COLLATE=utf8mb4_0900_ai_ci;
 
 
 INSERT INTO first_db.`User` (username,firstName,lastName) VALUES
-	 ('shnmkhk','Shanmukha','Katuri'),
-	 ('ytnktr','Yatin','Katuri'),
-	 ('sljvngll','Sailaja','Venigalla');
+	 ('first.user','First','User'),
+	 ('second.user','Second','User'),
+	 ('third.user','Third','User');
