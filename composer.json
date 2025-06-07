@@ -24,10 +24,13 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
+        "doctrine/migrations": "^3.9",
+        "doctrine/orm": "^3.3",
         "monolog/monolog": "^3.9.0",
         "php-di/php-di": "^7.0.11",
         "slim/psr7": "^1.5",
-        "slim/slim": "^4.10"
+        "slim/slim": "^4.10",
+        "symfony/json-path": "^7.3"
     },
     "require-dev": {
         "jangregor/phpstan-prophecy": "2.2.0",

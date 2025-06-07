@@ -8,6 +8,10 @@ use App\Domain\User\User;
 use App\Domain\User\UserNotFoundException;
 use App\Domain\User\UserRepository;
 
+use Doctrine\DBAL\DriverManager;
+
+
+
 class InMemoryUserRepository implements UserRepository
 {
     /**
@@ -20,6 +24,24 @@ class InMemoryUserRepository implements UserRepository
      */
     public function __construct(?array $users = null)
     {
+        //..
+        $connectionParams = [
+            'dbname' => 'first_db',
+            'user' => 'root',
+            'password' => 'my-secret-pw',
+            'host' => 'localhost',
+            'driver' => 'pdo_mysql',
+        ];
+        $conn = DriverManager::getConnection($connectionParams);
+        $sql = "SELECT * FROM User";
+        $stmt = $conn->executeQuery($sql); // Simple, but has several drawbacks
+
+        $this->users = [];
+        while (($row = $stmt->fetchAssociative()) !== false) {
+            array_push($this->users, new User($row['id'], $row['username'], $row['firstName'], $row['lastName']));
+        }
+       
+        /*
         $this->users = $users ?? [
             1 => new User(1, 'bill.gates', 'Bill', 'Gates'),
             2 => new User(2, 'steve.jobs', 'Steve', 'Jobs'),
@@ -27,6 +49,7 @@ class InMemoryUserRepository implements UserRepository
             4 => new User(4, 'evan.spiegel', 'Evan', 'Spiegel'),
             5 => new User(5, 'jack.dorsey', 'Jack', 'Dorsey'),
         ];
+        */
     }
 
     /**
