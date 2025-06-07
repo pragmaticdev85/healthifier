@@ -69,3 +69,6 @@ curl http://localhost:8080/users
 }
 ```
 ![Screenshot](./screenshots/DB_Results_Preview_REST_GET.png "DB Results Preview REST GET")
+
+### Reference:
+[Doctrine ORM Doc](https://www.doctrine-project.org/projects/doctrine-migrations/en/3.9/reference/managing-migrations.html#managing-migrations)
