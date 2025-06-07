@@ -3,6 +3,25 @@
 composer install
 ```
 
+## Start MySQL Server and run the DB Migrations
+```
+docker run --name mysql-instance-001 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
+```
+```
+REM Checking the status of current and available migrations
+.\vendor\bin\doctrine-migrations status
+REM Running the available migrations with dry-run (un-committed mode)
+.\vendor\bin\doctrine-migrations migrate --dry-run
+REM Running the available migrations with commit mode
+.\vendor\bin\doctrine-migrations migrate
+```
+
+![Screenshot](./screenshots/DB_Migrate_Result.png "DB Migrate Result")
+### Run this command in the application directory to run the test suite
+```bash
+composer test
+```
+
 ## Run the appp
 ```
 php -S 0.0.0.0:8080 -t public
@@ -14,20 +33,16 @@ composer start
 
 Or you can use `docker-compose` to run the app with `docker`, so you can run these commands:
 ```bash
-cd [my-app-name]
 docker-compose up -d
 ```
-After that, open `http://localhost:8080` in your browser.
 
-Run this command in the application directory to run the test suite
 
-```bash
-composer test
-```
+
+---
+After that, open `http://localhost:8080` in your browser or run the following `cURL`
 ```
 curl http://localhost:8080/users
 ```
-
 ```
 {
   "statusCode": 200,
@@ -53,4 +68,4 @@ curl http://localhost:8080/users
   ]
 }
 ```
-![Screenshot](./screenshots/DB_Results_Preview_REST_GET.png "Text to show on mouseover")
+![Screenshot](./screenshots/DB_Results_Preview_REST_GET.png "DB Results Preview REST GET")

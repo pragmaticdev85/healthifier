@@ -20,18 +20,23 @@ final class Version20250607131200 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        /*
-            $users = [
-                ['name' => 'mike', 'id' => 1],
-                ['name' => 'jwage', 'id' => 2],
-                ['name' => 'ocramius', 'id' => 3],
-            ];
-
-            foreach ($users as $user) {
-                $this->addSql('UPDATE user SET happy = true WHERE name = :name AND id = :id', $user);
-            }
-
-        */
+        $this->addSql("CREATE TABLE first_db.`User` (
+                id BIGINT auto_increment NOT NULL,
+                username varchar(100) NOT NULL,
+                firstName varchar(100) NOT NULL,
+                lastName varchar(100) NOT NULL,
+                CONSTRAINT User_PK PRIMARY KEY (id),
+                CONSTRAINT User_UNIQUE UNIQUE KEY (username)
+            )
+            ENGINE=InnoDB
+            DEFAULT CHARSET=utf8mb4
+            COLLATE=utf8mb4_0900_ai_ci;"
+        );
+        $this->addSql("INSERT INTO first_db.`User` (username,firstName,lastName) VALUES 
+            ('first.user','First','User'),
+	        ('second.user','Second','User'),
+	        ('third.user','Third','User');"
+        );
     }
 
     public function down(Schema $schema): void
