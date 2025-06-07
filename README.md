@@ -33,22 +33,22 @@ curl http://localhost:8080/users
   "statusCode": 200,
   "data": [
     {
-      "id": 1,
-      "username": "shnmkhk",
-      "firstName": "Shanmukha",
-      "lastName": "Katuri"
+      "id": 4,
+      "username": "first.user",
+      "firstName": "First",
+      "lastName": "User"
     },
     {
-      "id": 2,
-      "username": "ytnktr",
-      "firstName": "Yatin",
-      "lastName": "Katuri"
+      "id": 5,
+      "username": "second.user",
+      "firstName": "Second",
+      "lastName": "User"
     },
     {
-      "id": 3,
-      "username": "sljvngll",
-      "firstName": "Sailaja",
-      "lastName": "Venigalla"
+      "id": 6,
+      "username": "third.user",
+      "firstName": "Third",
+      "lastName": "User"
     }
   ]
 }
