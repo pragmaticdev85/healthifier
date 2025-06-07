@@ -18,9 +18,9 @@ class InMemoryUserRepository implements UserRepository
     /**
      * @param User[]|null $users
      */
-    public function __construct()
+    public function __construct(?array $users = null)
     {
-        $this->users = [
+        $this->users = $users ?? [
             1 => new User(1, 'bill.gates', 'Bill', 'Gates'),
             2 => new User(2, 'steve.jobs', 'Steve', 'Jobs'),
             3 => new User(3, 'mark.zuckerberg', 'Mark', 'Zuckerberg'),
