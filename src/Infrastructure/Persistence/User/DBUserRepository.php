@@ -10,10 +10,8 @@ use App\Domain\User\UserRepository;
 
 use Doctrine\DBAL\DriverManager;
 
+class DBUserRepository implements UserRepository {
 
-
-class InMemoryUserRepository implements UserRepository
-{
     /**
      * @var User[]
      */
@@ -24,15 +22,23 @@ class InMemoryUserRepository implements UserRepository
      */
     public function __construct(?array $users = null)
     {
-        
-        $this->users = $users ?? [
-            1 => new User(1, 'bill.gates', 'Bill', 'Gates'),
-            2 => new User(2, 'steve.jobs', 'Steve', 'Jobs'),
-            3 => new User(3, 'mark.zuckerberg', 'Mark', 'Zuckerberg'),
-            4 => new User(4, 'evan.spiegel', 'Evan', 'Spiegel'),
-            5 => new User(5, 'jack.dorsey', 'Jack', 'Dorsey'),
+        //..
+        $connectionParams = [
+            'dbname' => 'first_db',
+            'user' => 'root',
+            'password' => 'my-secret-pw',
+            'host' => 'localhost',
+            'driver' => 'pdo_mysql',
+            'pooled' => 'true'
         ];
-        
+        $conn = DriverManager::getConnection($connectionParams);
+        $sql = "SELECT * FROM User";
+        $stmt = $conn->executeQuery($sql); // Simple, but has several drawbacks
+
+        $this->users = [];
+        while (($row = $stmt->fetchAssociative()) !== false) {
+            array_push($this->users, new User($row['id'], $row['username'], $row['firstName'], $row['lastName']));
+        }
     }
 
     /**

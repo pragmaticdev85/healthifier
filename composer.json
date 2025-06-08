@@ -24,6 +24,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
+        "doctrine/dbal": "^4.2",
         "doctrine/migrations": "^3.9",
         "doctrine/orm": "^3.3",
         "monolog/monolog": "^3.9.0",
