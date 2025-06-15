@@ -27,7 +27,7 @@ class DBUserRepository implements UserRepository {
             'dbname' => 'first_db',
             'user' => 'root',
             'password' => 'my-secret-pw',
-            'host' => 'localhost',
+            'host' => '127.0.0.1',
             'driver' => 'pdo_mysql',
             'pooled' => 'true'
         ];

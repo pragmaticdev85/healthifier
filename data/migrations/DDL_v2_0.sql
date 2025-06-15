@@ -1,0 +1,3 @@
+INSERT INTO `User` (fname,lname,user_type,email_address,created_by,updated_by) VALUES ('First','User','NURSE','first_user@domain.com', 1, 1);
+INSERT INTO `User` (fname,lname,user_type,email_address,created_by,updated_by) VALUES ('Second','User','NURSE','second_user@domain.com', 1, 1);
+INSERT INTO `User` (fname,lname,user_type,email_address,created_by,updated_by) VALUES ('Third','User','NURSE','third_user@domain.com', 1, 1);

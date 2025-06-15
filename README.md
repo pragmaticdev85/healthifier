@@ -8,6 +8,9 @@ composer install
 docker run --name mysql-instance-001 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
 ```
 ```
+mysql -h 127.0.0.1 -u root first_db -p < ./data/migrations/DDL_v1_0.sql
+mysql -h 127.0.0.1 -u root first_db -p < ./data/migrations/DDL_v2_0.sql
+
 REM Checking the status of current and available migrations
 .\vendor\bin\doctrine-migrations status
 REM Running the available migrations with dry-run (un-committed mode)
