@@ -37,7 +37,7 @@ class DBUserRepository implements UserRepository {
 
         $this->users = [];
         while (($row = $stmt->fetchAssociative()) !== false) {
-            array_push($this->users, new User($row['id'], $row['username'], $row['firstName'], $row['lastName']));
+            array_push($this->users, new User($row['id'], $row['email_address'], $row['fname'], $row['lname']));
         }
     }
 
