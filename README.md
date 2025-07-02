@@ -6,10 +6,7 @@ composer install
 ## Start MySQL Server and run the DB Migrations
 ```
 docker run --name mysql-instance-001 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
-```
-
-### Run the DB Schema Restore
-```
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS first_db;USE first_db"
 ./vendor/bin/doctrine-migrations migrate
 ```
 
