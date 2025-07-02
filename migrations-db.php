@@ -1,9 +1,11 @@
 <?php
+use App\Domain\Utils\DBUtils;
 
+echo DBUtils::getValue("dbname");
 return [
-    'dbname' => 'first_db',
-    'user' => 'root',
-    'password' => 'my-secret-pw',
-    'host' => '127.0.0.1',
-    'driver' => 'pdo_mysql',
+    'dbname' => DBUtils::getValue("dbname"),
+    'user' => DBUtils::getValue("user"),
+    'password' => DBUtils::getValue("password"),
+    'host' => DBUtils::getValue("host"),
+    'driver' => DBUtils::getValue("driver")
 ];

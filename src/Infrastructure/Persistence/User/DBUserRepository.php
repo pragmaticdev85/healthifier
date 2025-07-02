@@ -8,9 +8,13 @@ use App\Domain\User\User;
 use App\Domain\User\UserNotFoundException;
 use App\Domain\User\UserRepository;
 
+use App\Domain\Utils\DBUtils;
 use Doctrine\DBAL\DriverManager;
+use App\Domain\Utils;
 
-class DBUserRepository implements UserRepository {
+
+class DBUserRepository implements UserRepository
+{
 
     /**
      * @var User[]
@@ -22,13 +26,12 @@ class DBUserRepository implements UserRepository {
      */
     public function __construct(?array $users = null)
     {
-        //..
         $connectionParams = [
-            'dbname' => 'first_db',
-            'user' => 'root',
-            'password' => 'my-secret-pw',
-            'host' => '127.0.0.1',
-            'driver' => 'pdo_mysql',
+            'dbname' => DBUtils::getValue("dbname"),
+            'user' => DBUtils::getValue("user"),
+            'password' => DBUtils::getValue("password"),
+            'host' => DBUtils::getValue("host"),
+            'driver' => DBUtils::getValue("driver"),
             'pooled' => 'true'
         ];
         $conn = DriverManager::getConnection($connectionParams);
