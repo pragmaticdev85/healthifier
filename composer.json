@@ -28,7 +28,7 @@
         "doctrine/migrations": "^3.9",
         "doctrine/orm": "^3.3",
         "monolog/monolog": "^3.9.0",
-        "php-di/php-di": "^7.0.11",
+        "php-di/php-di": "^7.1.1",
         "slim/psr7": "^1.5",
         "slim/slim": "^4.10",
         "symfony/json-path": "^7.3"
